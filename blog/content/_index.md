@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: Shadwn Blog
 type: docs
 ---
 
