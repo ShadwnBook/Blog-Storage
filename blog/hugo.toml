@@ -1,0 +1,4 @@
+baseURL = 'https://ShadwnBook.github.io/'
+languageCode = 'en-us'
+title = 'Shadwn Blog'
+theme="hugo-book"
