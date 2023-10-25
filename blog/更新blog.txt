@@ -1,0 +1,2 @@
+§ó·spublic
+hugo --theme="hugo-book" --baseURL="https://ShadwnBook.github.io" 

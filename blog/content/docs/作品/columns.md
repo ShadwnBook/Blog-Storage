@@ -1,3 +1,7 @@
+---
+bookHidden: true
+---
+
 # Columns
 
 Columns help organize shorter pieces of content horizontally for readability.

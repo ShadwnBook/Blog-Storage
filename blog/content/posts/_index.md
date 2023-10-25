@@ -1,7 +1,7 @@
 ---
 menu:
   after:
-    name: blog
+    name: 遺文
     weight: 5
-title: Blog
+title: 遺文
 ---
