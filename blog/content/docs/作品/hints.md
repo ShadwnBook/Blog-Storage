@@ -1,5 +1,5 @@
 ---
-bookHidden: true
+bookHidden: True
 ---
 # Hints
 
