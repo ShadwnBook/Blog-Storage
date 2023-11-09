@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrix Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function addMatrices() {
+            // 获取用户输入的矩阵
+            var matrixA = JSON.parse(document.getElementById('matrixA').value);
+            var matrixB = JSON.parse(document.getElementById('matrixB').value);
+
+            // 执行矩阵加法
+            var result = [];
+            for (var i = 0; i < matrixA.length; i++) {
+                var row = [];
+                for (var j = 0; j < matrixA[i].length; j++) {
+                    row.push(matrixA[i][j] + matrixB[i][j]);
+                }
+                result.push(row);
+            }
+
+            // 显示结果
+            document.getElementById('result').innerHTML = JSON.stringify(result);
+        }
+
+        function multiplyMatrices() {
+            // 获取用户输入的矩阵
+            var matrixA = JSON.parse(document.getElementById('matrixA').value);
+            var matrixB = JSON.parse(document.getElementById('matrixB').value);
+
+            // 执行矩阵乘法
+            var result = [];
+            for (var i = 0; i < matrixA.length; i++) {
+                var row = [];
+                for (var j = 0; j < matrixB[0].length; j++) {
+                    var sum = 0;
+                    for (var k = 0; k < matrixB.length; k++) {
+                        sum += matrixA[i][k] * matrixB[k][j];
+                    }
+                    row.push(sum);
+                }
+                result.push(row);
+            }
+
+            // 显示结果
+            document.getElementById('result').innerHTML = JSON.stringify(result);
+        }
+
+        function scalarMultiply() {
+            // 获取用户输入的矩阵和标量值
+            var matrixA = JSON.parse(document.getElementById('matrixA').value);
+            var scalar = parseFloat(document.getElementById('scalar').value);
+
+            // 执行标量乘法
+            var result = [];
+            for (var i = 0; i < matrixA.length; i++) {
+                var row = [];
+                for (var j = 0; j < matrixA[i].length; j++) {
+                    row.push(matrixA[i][j] * scalar);
+                }
+                result.push(row);
+            }
+
+            // 显示结果
+            document.getElementById('result').innerHTML = JSON.stringify(result);
+        }
+    </script>
+</head>
+<body>
+    <h1>Matrix Calculator</h1>
+
+    <label for="matrixA">Matrix A (JSON format):</label>
+    <input type="text" id="matrixA" placeholder="e.g., [[1, 2], [3, 4]]" />
+
+    <label for="matrixB">Matrix B (JSON format):</label>
+    <input type="text" id="matrixB" placeholder="e.g., [[5, 6], [7, 8]]" />
+
+    <label for="scalar">Scalar Value:</label>
+    <input type="text" id="scalar" placeholder="e.g., 2.5" />
+
+    <button onclick="addMatrices()">Add Matrices</button>
+    <button onclick="multiplyMatrices()">Multiply Matrices</button>
+    <button onclick="scalarMultiply()">Scalar Multiply</button>
+
+    <h2>Result:</h2>
+    <p id="result"></p>
+</body>
+</html>

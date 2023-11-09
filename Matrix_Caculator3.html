@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matrix Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+        }
+
+        button {
+            background-color: #0074d9;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script>
+        function addMatrices() {
+            performMatrixOperation('add');
+        }
+
+        function subtractMatrices() {
+            performMatrixOperation('subtract');
+        }
+
+        function multiplyMatrices() {
+            performMatrixOperation('multiply');
+        }
+
+        function divideMatrices() {
+            performMatrixOperation('divide');
+        }
+
+        function performMatrixOperation(operation) {
+            var matrixA = parseTable('matrixTableA');
+            var matrixB = parseTable('matrixTableB');
+
+            var result = [];
+            for (var i = 0; i < matrixA.length; i++) {
+                var row = [];
+                for (var j = 0; j < matrixA[i].length; j++) {
+                    if (operation === 'add') {
+                        row.push(matrixA[i][j] + matrixB[i][j]);
+                    } else if (operation === 'subtract') {
+                        row.push(matrixA[i][j] - matrixB[i][j]);
+                    } else if (operation === 'multiply') {
+                        row.push(matrixA[i][j] * matrixB[i][j]);
+                    } else if (operation === 'divide') {
+                        row.push(matrixA[i][j] / matrixB[i][j]);
+                    }
+                }
+                result.push(row);
+            }
+
+            displayTable('resultTable', result);
+        }
+
+        function parseTable(tableId) {
+            var table = document.getElementById(tableId);
+            var matrix = [];
+            var rows = table.getElementsByTagName('tr');
+            for (var i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                var rowData = [];
+                var cells = row.getElementsByTagName('input');
+                for (var j = 0; j < cells.length; j++) {
+                    rowData.push(parseFloat(cells[j].value));
+                }
+                matrix.push(rowData);
+            }
+            return matrix;
+        }
+
+        function displayTable(tableId, matrix) {
+            var table = document.getElementById(tableId);
+            table.innerHTML = '';
+            for (var i = 0; i < matrix.length; i++) {
+                var row = document.createElement('tr');
+                for (var j = 0; j < matrix[i].length; j++) {
+                    var cell = document.createElement('td');
+                    cell.textContent = matrix[i][j];
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Matrix Calculator</h1>
+
+    <h2>Matrix A</h2>
+    <table id="matrixTableA">
+        <tr>
+            <td><input type="text" value="1"></td>
+            <td><input type="text" value="2"></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="3"></td>
+            <td><input type="text" value="4"></td>
+        </tr>
+    </table>
+
+    <h2>Matrix B</h2>
+    <table id="matrixTableB">
+        <tr>
+            <td><input type="text" value="5"></td>
+            <td><input type="text" value="6"></td>
+        </tr>
+        <tr>
+            <td><input type="text" value="7"></td>
+            <td><input type="text" value="8"></td>
+        </tr>
+    </table>
+
+    <button onclick="addMatrices()">Add Matrices</button>
+    <button onclick="subtractMatrices()">Subtract Matrices</button>
+    <button onclick="multiplyMatrices()">Multiply Matrices</button>
+    <button onclick="divideMatrices()">Divide Matrices</button>
+
+    <h2>Result</h2>
+    <table id="resultTable"></table>
+</body>
+</html>
