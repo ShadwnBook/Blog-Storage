@@ -1,2 +1,5 @@
 更新public
 hugo --theme="hugo-book" --baseURL="https://ShadwnBook.github.io" 
+
+本機預覽：
+hugo server
